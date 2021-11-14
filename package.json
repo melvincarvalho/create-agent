@@ -1,0 +1,27 @@
+{
+  "name": "create-agent",
+  "version": "0.0.2",
+  "description": "create an agent",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "git-mark": "bin/create-agent",
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/melvincarvalho/create-agent.git"
+  },
+  "author": "Melvin Carvalho",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/melvincarvalho/create-agent/issues"
+  },
+  "homepage": "https://github.com/melvincarvalho/create-agent#readme",
+  "keywords": [
+    "aam",
+    "create-agent",
+    "agent"
+  ]
+}
