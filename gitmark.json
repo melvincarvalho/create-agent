@@ -1,0 +1,7 @@
+{
+  "@id": "gitmark:85c1f6a94899fe7ab7a84cd4b2649b83c30b9728062f426fd4f9fd6234c3b47a:0",
+  "genesis": "gitmark:85c1f6a94899fe7ab7a84cd4b2649b83c30b9728062f426fd4f9fd6234c3b47a:0",
+  "nick": "create-agent",
+  "package": "./package.json",
+  "repository": "./"
+}
