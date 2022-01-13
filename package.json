@@ -1,13 +1,13 @@
 {
   "name": "create-agent",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "create an agent",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "git-mark": "bin/create-agent"
+    "create-agent": "bin/create-agent"
   },
   "repository": {
     "type": "git",
