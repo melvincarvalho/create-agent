@@ -19,8 +19,8 @@ export function generateAgent() {
   const nsec = nip19.nsecEncode(sk)
   const npub = nip19.npubEncode(pubkey)
 
-  // Create publicKeyMultibase: f (base16-lower) + e701 (secp256k1-pub) + 02 (even parity) + pubkey
-  const publicKeyMultibase = `f01e70202${pubkey}`
+  // Create publicKeyMultibase: f (base16-lower) + e701 (secp256k1-pub varint) + 02 (even parity) + pubkey
+  const publicKeyMultibase = `fe70102${pubkey}`
 
   // Create DID document per https://nostrcg.github.io/did-nostr/
   const did = {
