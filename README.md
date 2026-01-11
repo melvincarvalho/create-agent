@@ -1,27 +1,21 @@
-# create-agent
+# npm init agent
 
 [![npm version](https://img.shields.io/npm/v/create-agent.svg)](https://www.npmjs.com/package/create-agent)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Node.js](https://img.shields.io/badge/Node.js-18+-339933.svg)](https://nodejs.org/)
 
 > **Your AI agent has no identity.** It can't prove who it is. It can't sign anything. It can't be trusted.
->
-> Fix that in one command.
-
-```bash
-npx create-agent
-```
 
 Instantly generates a cryptographic identity with a [W3C DID document](https://www.w3.org/TR/did-core/) — the emerging standard for autonomous agent identity.
 
 ---
 
-## Why create-agent?
+## Why?
 
 AI agents and autonomous systems need verifiable identities. Traditional auth (API keys, OAuth) wasn't designed for machine-to-machine trust. **create-agent** provides:
 
-- **Cryptographic Identity** — Schnorr keypairs on secp256k1
 - **W3C Standards** — DID documents for interoperability
+- **Cryptographic Identity** — Schnorr keypairs on secp256k1
 - **Decentralized** — No central authority, works with Nostr relays
 - **Zero Config** — One command, instant identity
 
@@ -30,13 +24,14 @@ AI agents and autonomous systems need verifiable identities. Traditional auth (A
 ## Installation
 
 ```bash
-# Run directly (no install)
-npx create-agent
+# Just run it (no install required)
+npm init agent
 
 # Or install globally
 npm install -g create-agent
+create-agent
 
-# Or as a dependency
+# Or as a library
 npm install create-agent
 ```
 
