@@ -1,5 +1,7 @@
 # create-agent 🤖
 
+[![npm version](https://img.shields.io/npm/v/create-agent.svg)](https://www.npmjs.com/package/create-agent)
+
 A command-line tool to generate Agent keypairs with various encodings.
 
 ## Installation 📦
