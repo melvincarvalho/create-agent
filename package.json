@@ -3,7 +3,6 @@
   "type": "module",
   "version": "0.0.8",
   "description": "create an agent",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
