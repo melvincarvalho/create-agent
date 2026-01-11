@@ -19,18 +19,23 @@ export function generateAgent() {
   const nsec = nip19.nsecEncode(sk)
   const npub = nip19.npubEncode(pubkey)
 
-  // Create DID document
+  // Create publicKeyMultibase: f (base16-lower) + e701 (secp256k1-pub) + 02 (even parity) + pubkey
+  const publicKeyMultibase = `f01e70202${pubkey}`
+
+  // Create DID document per https://nostrcg.github.io/did-nostr/
   const did = {
     "@context": [
-      "https://www.w3.org/ns/did/v1",
+      "https://w3id.org/did",
       "https://w3id.org/nostr/context"
     ],
     "id": `did:nostr:${pubkey}`,
+    "type": "DIDNostr",
     "verificationMethod": [
       {
         "id": `did:nostr:${pubkey}#key1`,
+        "type": "Multikey",
         "controller": `did:nostr:${pubkey}`,
-        "type": "SchnorrVerification2025"
+        "publicKeyMultibase": publicKeyMultibase
       }
     ],
     "authentication": ["#key1"],
