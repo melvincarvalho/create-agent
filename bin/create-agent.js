@@ -14,11 +14,13 @@ function isGitRepo() {
   }
 }
 
-// Check if privkey already exists
-function hasPrivkey() {
+// Check if agent identity already exists in THIS repo (not inherited from parent)
+function hasIdentity() {
   try {
-    const result = execSync('git config nostr.privkey', { encoding: 'utf8' }).trim()
-    return result.length > 0
+    const result = execSync('git config --local nostr.privkey', { encoding: 'utf8' }).trim()
+    const hasLocalPrivkey = result.length > 0
+    const hasDIDFile = fs.existsSync('agent.did.json')
+    return hasLocalPrivkey && hasDIDFile
   } catch {
     return false
   }
@@ -26,12 +28,11 @@ function hasPrivkey() {
 
 // Main
 if (!isGitRepo()) {
-  console.error('\x1b[31mError: Not in a git repository.\x1b[0m')
-  console.error('Run \x1b[33mgit init\x1b[0m first.')
-  process.exit(1)
+  console.error('\x1b[36mInitializing git repository...\x1b[0m')
+  execSync('git init', { stdio: 'inherit' })
 }
 
-if (hasPrivkey()) {
+if (hasIdentity()) {
   console.error('\x1b[33mAgent identity already exists.\x1b[0m')
   console.error('Privkey found in: git config nostr.privkey')
   console.error('To regenerate, first run: git config --unset nostr.privkey')
