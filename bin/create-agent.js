@@ -35,3 +35,12 @@ process.stderr.write('\x1b[36m📄 DID Nostr Document:\x1b[0m\n');
 process.stderr.write('\x1b[36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\x1b[0m\n');
 console.log(JSON.stringify(did, null, 2));
 process.stderr.write('\x1b[36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\x1b[0m\n');
+
+// Suggest next steps with aam
+process.stderr.write('\n');
+process.stderr.write('\x1b[36m🚀 Next Steps:\x1b[0m\n');
+process.stderr.write('\x1b[36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\x1b[0m\n');
+process.stderr.write('\x1b[0m- Install the Agentic App Manager: \x1b[33mnpm install -g aam\x1b[0m\n');
+process.stderr.write('\x1b[0m- Add skills to your agent: \x1b[33maam skills anthropics/skills\x1b[0m\n');
+process.stderr.write('\x1b[0m- Browse the registry: \x1b[33mhttps://aam.wtf\x1b[0m\n');
+process.stderr.write('\n');
