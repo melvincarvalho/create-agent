@@ -6,7 +6,9 @@
 
 > **Your AI agent has no identity.** It can't prove who it is. It can't sign anything. It can't be trusted.
 
-Instantly generates a cryptographic identity with a [W3C DID document](https://www.w3.org/TR/did-core/) — the emerging standard for autonomous agent identity.
+Instantly generates a cryptographic identity with a [W3C DID document](https://www.w3.org/TR/did-core/) — the foundation for **safe AI agents you can trust**.
+
+Use with [aam](https://aam.wtf) to sign and verify skills and agents.
 
 ---
 
@@ -146,6 +148,7 @@ fe70102<pubkey>
 
 | Application | Description |
 |-------------|-------------|
+| **Sign Skills & Agents** | Cryptographically sign AI skills with [aam](https://aam.wtf) |
 | **AI Agents** | Verifiable identity for autonomous systems |
 | **Nostr Bots** | Generate keypairs for automated accounts |
 | **Testing** | Create ephemeral identities for integration tests |
@@ -165,6 +168,31 @@ The CLI outputs private keys to `stderr` only, allowing safe piping of the DID d
 
 ---
 
+## Next Steps: Sign Your Agents
+
+Use your identity to sign skills and agents with [aam](https://aam.wtf):
+
+```bash
+# 1. Generate your identity
+npm init agent
+# Save your privkey (hex format)
+
+# 2. Install aam
+npm install -g aam
+
+# 3. Sign a skill you've created
+aam skill sign my-skill --privkey <your-privkey> --repo user/repo
+
+# 4. Others can verify your signature
+aam skill verify my-skill
+```
+
+This creates a **Nostr event (kind 31337)** cryptographically linking your identity to the skill. No black boxes. No hidden motives. Trust through transparency.
+
+Learn more at [aam.wtf](https://aam.wtf)
+
+---
+
 ## Specification
 
 This implementation follows the [did:nostr Method Specification](https://nostrcg.github.io/did-nostr/) maintained by the [W3C Nostr Community Group](https://www.w3.org/community/nostr/).
@@ -173,6 +201,7 @@ This implementation follows the [did:nostr Method Specification](https://nostrcg
 
 ## Related
 
+- [aam](https://aam.wtf) — Sign and verify AI skills and agents
 - [did:nostr Specification](https://nostrcg.github.io/did-nostr/)
 - [DID:nostr Explorer](https://nostrapps.github.io/did-explorer/)
 - [nostr-tools](https://github.com/nbd-wtf/nostr-tools)
