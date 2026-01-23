@@ -1,46 +1,70 @@
 #!/usr/bin/env node
 
 import { generateAgent } from '../index.js'
+import { execSync } from 'child_process'
+import fs from 'fs'
+
+// Check if in a git repo
+function isGitRepo() {
+  try {
+    execSync('git rev-parse --git-dir', { stdio: 'ignore' })
+    return true
+  } catch {
+    return false
+  }
+}
+
+// Check if privkey already exists
+function hasPrivkey() {
+  try {
+    const result = execSync('git config nostr.privkey', { encoding: 'utf8' }).trim()
+    return result.length > 0
+  } catch {
+    return false
+  }
+}
+
+// Main
+if (!isGitRepo()) {
+  console.error('\x1b[31mError: Not in a git repository.\x1b[0m')
+  console.error('Run \x1b[33mgit init\x1b[0m first.')
+  process.exit(1)
+}
+
+if (hasPrivkey()) {
+  console.error('\x1b[33mAgent identity already exists.\x1b[0m')
+  console.error('Privkey found in: git config nostr.privkey')
+  console.error('To regenerate, first run: git config --unset nostr.privkey')
+  process.exit(1)
+}
 
 // Generate agent identity
 const { privkey, pubkey, nsec, npub, did } = generateAgent()
 
-// =============================================================================
-// CONSOLE OUTPUT
-// =============================================================================
-// First output the initial warning message to stderr
-process.stderr.write('\x1b[36m🤖 Creating new Nostr agent identity...\x1b[0m\n');
-process.stderr.write('\x1b[36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\x1b[0m\n');
-process.stderr.write('\x1b[33m⚠️  IMPORTANT: Keep your private key (nsec/privkey) secret!\x1b[0m\n');
-process.stderr.write('\x1b[33m   Never share it with anyone or input it on websites.\x1b[0m\n');
-process.stderr.write('\n');
+// Save DID document to file
+const didFile = 'agent.did.json'
+fs.writeFileSync(didFile, JSON.stringify(did, null, 2) + '\n')
 
-// Then output the Nostr identity information to stderr
-process.stderr.write('\n\x1b[32m📋 Your Nostr Identity:\x1b[0m\n');
-process.stderr.write('\x1b[32m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\x1b[0m\n');
-process.stderr.write(`\x1b[0mPublic Key (hex) : \x1b[33m${pubkey}\x1b[0m\n`);
-process.stderr.write(`\x1b[0mNostr Public Key : \x1b[33m${npub}\x1b[0m\n`);
-process.stderr.write(`\x1b[0mPrivate Key (hex): \x1b[31m${privkey}\x1b[0m\n`);
-process.stderr.write(`\x1b[0mNostr Secret Key : \x1b[31m${nsec}\x1b[0m\n`);
-process.stderr.write('\n');
-process.stderr.write('\x1b[36m🔍 Usage:\x1b[0m\n');
-process.stderr.write('\x1b[0m- Use your npub to identify yourself to others\x1b[0m\n');
-process.stderr.write('\x1b[0m- Add relays to the services array for discovery\x1b[0m\n');
-process.stderr.write('\x1b[0m- Use nsec to sign into Nostr clients (handle with extreme care!)\x1b[0m\n');
-process.stderr.write('\n');
+// Save privkey to git config
+execSync(`git config nostr.privkey ${privkey}`)
 
+// Also output DID to stdout (clean JSON, no npm noise)
+console.log(JSON.stringify(did, null, 2))
 
-// Then output the DID document to stdout with a clear header in the output
-process.stderr.write('\x1b[36m📄 DID Nostr Document:\x1b[0m\n');
-process.stderr.write('\x1b[36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\x1b[0m\n');
-console.log(JSON.stringify(did, null, 2));
-process.stderr.write('\x1b[36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\x1b[0m\n');
-
-// Suggest next steps with aam
-process.stderr.write('\n');
-process.stderr.write('\x1b[36m🚀 Next Steps:\x1b[0m\n');
-process.stderr.write('\x1b[36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\x1b[0m\n');
-process.stderr.write('\x1b[0m- Install the Agentic App Manager: \x1b[33mnpm install -g aam\x1b[0m\n');
-process.stderr.write('\x1b[0m- Add skills to your agent: \x1b[33maam skills anthropics/skills\x1b[0m\n');
-process.stderr.write('\x1b[0m- Browse the registry: \x1b[33mhttps://aam.wtf\x1b[0m\n');
-process.stderr.write('\n');
+// Status messages to stderr
+process.stderr.write('\n')
+process.stderr.write('\x1b[32m✓ Agent identity created\x1b[0m\n')
+process.stderr.write(`\x1b[32m✓ DID saved to ${didFile}\x1b[0m\n`)
+process.stderr.write('\x1b[32m✓ Private key saved to git config nostr.privkey\x1b[0m\n')
+process.stderr.write('\n')
+process.stderr.write(`\x1b[36m  Public key:  \x1b[33m${pubkey}\x1b[0m\n`)
+process.stderr.write(`\x1b[36m  npub:        \x1b[33m${npub}\x1b[0m\n`)
+process.stderr.write(`\x1b[36m  DID:         \x1b[33m${did.id}\x1b[0m\n`)
+process.stderr.write('\n')
+process.stderr.write('\x1b[33m⚠  Keep your privkey secret - never commit it\x1b[0m\n')
+process.stderr.write('\x1b[0m   View with: git config nostr.privkey\x1b[0m\n')
+process.stderr.write('\n')
+process.stderr.write('\x1b[36mNext steps:\x1b[0m\n')
+process.stderr.write('\x1b[0m  npm install -g aam\x1b[0m\n')
+process.stderr.write('\x1b[0m  aam skill sign <name> --repo you/repo\x1b[0m\n')
+process.stderr.write('\n')
