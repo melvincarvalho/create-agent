@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>npm init agent - Cryptographic Identity for AI Agents</title>
+  <meta name="description" content="Give your AI agent an identity. Generate cryptographic keys with did:nostr in one command. The foundation for safe AI agents you can trust.">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://create-agent.org/">
+  <meta property="og:title" content="npm init agent - Identity for AI Agents">
+  <meta property="og:description" content="Give your AI agent an identity. Generate cryptographic keys with did:nostr in one command.">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="npm init agent - Identity for AI Agents">
+  <meta name="twitter:description" content="Give your AI agent an identity. Generate cryptographic keys with did:nostr in one command.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f0f0f8;
+      --bg-hero: linear-gradient(180deg, #e8e8f4 0%, #f0f0f8 100%);
+      --bg-card: #ffffff;
+      --border: #e0e0ec;
+      --text: #1a1a2e;
+      --text-dim: #6b6b80;
+      --accent: #7c3aed;
+      --accent-light: #a78bfa;
+      --accent-soft: #7c3aed12;
+      --green: #10b981;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Hero */
+    .hero {
+      background: var(--bg-hero);
+      padding: 5rem 0 4rem;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+
+    .hero h1 .gradient {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      color: var(--text-dim);
+      font-size: 1.125rem;
+      max-width: 500px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .hero p strong {
+      color: var(--text);
+    }
+
+    /* Install Box */
+    .install-box {
+      max-width: 400px;
+      margin: 0 auto 2rem;
+      background: white;
+      border-radius: 12px;
+      padding: 1.25rem 1.75rem;
+      box-shadow: 0 4px 32px rgba(0, 0, 0, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+      font-size: 1.1rem;
+      border: 1px solid var(--border);
+    }
+
+    .install-box .prompt { color: var(--text-dim); }
+    .install-box .cmd { color: var(--accent); }
+    .install-box .pkg { color: var(--green); }
+
+    .copy-btn {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+      padding: 0.5rem 0.875rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.75rem;
+      font-weight: 500;
+      font-family: 'Inter', sans-serif;
+      transition: all 0.2s;
+    }
+
+    .copy-btn:hover {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* Flow */
+    .flow {
+      padding: 3rem 0;
+      background: white;
+    }
+
+    .flow h2 {
+      text-align: center;
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .flow-steps {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .flow-step {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+      flex: 1;
+      min-width: 200px;
+      max-width: 250px;
+    }
+
+    .flow-step .number {
+      width: 36px;
+      height: 36px;
+      background: var(--accent);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      font-weight: 700;
+    }
+
+    .flow-step h3 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .flow-step p {
+      font-size: 0.875rem;
+      color: var(--text-dim);
+    }
+
+    .flow-step code {
+      display: block;
+      margin-top: 0.75rem;
+      background: white;
+      border: 1px solid var(--border);
+      padding: 0.5rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      color: var(--green);
+    }
+
+    /* Output Preview */
+    .output {
+      padding: 3rem 0;
+    }
+
+    .output h2 {
+      text-align: center;
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .output pre {
+      background: #1a1a2e;
+      color: #e0e0ec;
+      padding: 1.5rem;
+      border-radius: 12px;
+      overflow-x: auto;
+      font-size: 0.8rem;
+      line-height: 1.5;
+    }
+
+    .output pre .key { color: #a78bfa; }
+    .output pre .str { color: #10b981; }
+
+    /* CTA */
+    .cta {
+      padding: 3rem 0;
+      background: white;
+      text-align: center;
+      border-top: 1px solid var(--border);
+    }
+
+    .cta h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .cta p {
+      color: var(--text-dim);
+      margin-bottom: 1.5rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.9rem 1.75rem;
+      border-radius: 10px;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      margin: 0 0.5rem;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+      box-shadow: 0 2px 8px rgba(124, 58, 237, 0.25);
+    }
+
+    .btn-primary:hover {
+      background: #6d28d9;
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: var(--text);
+      border: 1.5px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--accent);
+    }
+
+    /* Footer */
+    footer {
+      padding: 2rem 0;
+      text-align: center;
+      color: var(--text-dim);
+      font-size: 0.875rem;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2rem; }
+      .install-box {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+      .flow-steps { flex-direction: column; align-items: center; }
+      .flow-step { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <h1>Give Your Agent<br>an <span class="gradient">Identity</span></h1>
+      <p>Your AI agent can't prove who it is. <strong>Fix that in one command.</strong> Generate cryptographic keys with did:nostr.</p>
+
+      <div class="install-box">
+        <div>
+          <span class="prompt">$</span>
+          <span class="cmd">npm</span> init
+          <span class="pkg">agent</span>
+        </div>
+        <button class="copy-btn" onclick="copyInstall()">Copy</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Flow -->
+  <section class="flow">
+    <div class="container">
+      <h2>From Zero to Trusted Agent</h2>
+      <div class="flow-steps">
+        <div class="flow-step">
+          <div class="number">1</div>
+          <h3>Create Identity</h3>
+          <p>Generate did:nostr keypair</p>
+          <code>npm init agent</code>
+        </div>
+        <div class="flow-step">
+          <div class="number">2</div>
+          <h3>Sign Your Work</h3>
+          <p>Cryptographically sign skills</p>
+          <code>aam skill sign</code>
+        </div>
+        <div class="flow-step">
+          <div class="number">3</div>
+          <h3>Build Trust</h3>
+          <p>Others verify your identity</p>
+          <code>aam skill verify</code>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Output Preview -->
+  <section class="output">
+    <div class="container">
+      <h2>What You Get</h2>
+      <pre>{
+  <span class="key">"id"</span>: <span class="str">"did:nostr:73ca7fc7184ceb1095183663b1d9b2d3..."</span>,
+  <span class="key">"type"</span>: <span class="str">"DIDNostr"</span>,
+  <span class="key">"verificationMethod"</span>: [{
+    <span class="key">"type"</span>: <span class="str">"Multikey"</span>,
+    <span class="key">"publicKeyMultibase"</span>: <span class="str">"fe70102..."</span>
+  }],
+  <span class="key">"authentication"</span>: [<span class="str">"#key1"</span>]
+}</pre>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="container">
+      <h2>Ready to Sign Your Agents?</h2>
+      <p>Use your identity with aam to create safe, trusted AI agents.</p>
+      <a href="https://aam.wtf" class="btn btn-primary">Get Started with AAM</a>
+      <a href="https://github.com/melvincarvalho/create-agent" class="btn btn-secondary">View on GitHub</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>
+        <strong>create-agent</strong> |
+        <a href="https://aam.wtf">aam.wtf</a> |
+        <a href="https://github.com/melvincarvalho/create-agent">GitHub</a> |
+        MIT License
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    function copyInstall() {
+      navigator.clipboard.writeText('npm init agent');
+      const btn = document.querySelector('.copy-btn');
+      btn.textContent = 'Copied!';
+      setTimeout(() => btn.textContent = 'Copy', 2000);
+    }
+  </script>
+</body>
+</html>
