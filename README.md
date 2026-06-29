@@ -51,6 +51,7 @@ The tool outputs a spec-compliant DID document to `stdout`:
   ],
   "id": "did:nostr:dd82687ee5a352c6d6de337bce53f150ca1567f3861475c74e7da62695931d23",
   "type": "DIDNostr",
+  "seeAlso": "https://init-agent.com/SKILL.md",
   "verificationMethod": [
     {
       "id": "did:nostr:dd82687ee5a352c6d6de337bce53f150ca1567f3861475c74e7da62695931d23#key1",
@@ -122,9 +123,10 @@ create-agent 2>/dev/null
 
 | Field | Value |
 |-------|-------|
-| `@context` | W3C DID v1 + Nostr context |
+| `@context` | W3C CID v1 + Nostr context |
 | `id` | `did:nostr:<pubkey>` |
 | `type` | `DIDNostr` |
+| `seeAlso` | Link to the [agent onboarding skill](https://init-agent.com/SKILL.md) |
 | `verificationMethod` | Multikey with secp256k1 |
 | `authentication` | `#key1` reference |
 | `assertionMethod` | `#key1` reference |

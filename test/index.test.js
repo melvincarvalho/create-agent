@@ -47,6 +47,7 @@ describe('generateAgent', () => {
       'https://w3id.org/nostr/context'
     ])
     assert.strictEqual(did.id, `did:nostr:${pubkey}`)
+    assert.strictEqual(did.seeAlso, 'https://init-agent.com/SKILL.md')
     assert.ok(Array.isArray(did.verificationMethod))
     assert.strictEqual(did.verificationMethod[0].type, 'Multikey')
     assert.deepStrictEqual(did.authentication, ['#key1'])

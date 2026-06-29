@@ -30,6 +30,8 @@ export function generateAgent() {
     ],
     "id": `did:nostr:${pubkey}`,
     "type": "DIDNostr",
+    // Discovery breadcrumb: an agent can follow this to learn the did:nostr method
+    "seeAlso": "https://init-agent.com/SKILL.md",
     "verificationMethod": [
       {
         "id": `did:nostr:${pubkey}#key1`,
