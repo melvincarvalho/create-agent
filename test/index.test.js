@@ -43,12 +43,12 @@ describe('generateAgent', () => {
     const { did, pubkey } = generateAgent()
     
     assert.deepStrictEqual(did['@context'], [
-      'https://www.w3.org/ns/did/v1',
+      'https://www.w3.org/ns/cid/v1',
       'https://w3id.org/nostr/context'
     ])
     assert.strictEqual(did.id, `did:nostr:${pubkey}`)
     assert.ok(Array.isArray(did.verificationMethod))
-    assert.strictEqual(did.verificationMethod[0].type, 'SchnorrVerification2025')
+    assert.strictEqual(did.verificationMethod[0].type, 'Multikey')
     assert.deepStrictEqual(did.authentication, ['#key1'])
     assert.deepStrictEqual(did.assertionMethod, ['#key1'])
     assert.deepStrictEqual(did.service, [])

@@ -46,7 +46,7 @@ The tool outputs a spec-compliant DID document to `stdout`:
 ```json
 {
   "@context": [
-    "https://w3id.org/did",
+    "https://www.w3.org/ns/cid/v1",
     "https://w3id.org/nostr/context"
   ],
   "id": "did:nostr:dd82687ee5a352c6d6de337bce53f150ca1567f3861475c74e7da62695931d23",
