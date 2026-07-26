@@ -82,11 +82,12 @@ layers.
 
 ## Current spec facts (verify; do not recall from memory)
 
-did:nostr is a young, evolving method. As of **2026-06-29** the canonical
+did:nostr is a young, evolving method. As of **2026-07-26** (spec 0.1.1) the canonical
 shape is:
 
 - `@context`: `["https://www.w3.org/ns/did/v1", "https://www.w3.org/ns/cid/v1", "https://w3id.org/nostr/context"]`
-  — note **CID v1**, not the older DID v1 context.
+  — note it leads with **DID v1** (required by DID Core), followed by **CID v1**, which
+  defines the `Multikey` terms.
 - `type`: `DIDNostr`; verification method `type`: `Multikey`.
 - `publicKeyMultibase`: `fe70102` + lowercase-hex pubkey.
 - `authentication` and `assertionMethod`: `["#key1"]`.
