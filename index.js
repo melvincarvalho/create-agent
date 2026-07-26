@@ -25,6 +25,7 @@ export function generateAgent() {
   // Create DID document per https://nostrcg.github.io/did-nostr/
   const did = {
     "@context": [
+      "https://www.w3.org/ns/did/v1",
       "https://www.w3.org/ns/cid/v1",
       "https://w3id.org/nostr/context"
     ],
