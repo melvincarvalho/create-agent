@@ -52,7 +52,7 @@ layers.
 
 ```json
 {
-  "@context": ["https://www.w3.org/ns/cid/v1", "https://w3id.org/nostr/context"],
+  "@context": ["https://www.w3.org/ns/did/v1", "https://www.w3.org/ns/cid/v1", "https://w3id.org/nostr/context"],
   "id": "did:nostr:dd82687ee5a352c6d6de337bce53f150ca1567f3861475c74e7da62695931d23",
   "type": "DIDNostr",
   "seeAlso": "https://init-agent.com/SKILL.md",
@@ -85,7 +85,7 @@ layers.
 did:nostr is a young, evolving method. As of **2026-06-29** the canonical
 shape is:
 
-- `@context`: `["https://www.w3.org/ns/cid/v1", "https://w3id.org/nostr/context"]`
+- `@context`: `["https://www.w3.org/ns/did/v1", "https://www.w3.org/ns/cid/v1", "https://w3id.org/nostr/context"]`
   — note **CID v1**, not the older DID v1 context.
 - `type`: `DIDNostr`; verification method `type`: `Multikey`.
 - `publicKeyMultibase`: `fe70102` + lowercase-hex pubkey.
