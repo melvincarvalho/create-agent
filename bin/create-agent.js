@@ -4,11 +4,13 @@ import { generateAgent } from '../index.js'
 import { execSync } from 'child_process'
 import fs from 'fs'
 
-// Check if in a git repo
-function isGitRepo() {
+// Check if this directory is the top of its own git repo. A subfolder of
+// another repo does not count: its git config is the parent's, so a key saved
+// there would be shared with (and overwritten by) every other subfolder.
+function isRepoRoot() {
   try {
-    execSync('git rev-parse --git-dir', { stdio: 'ignore' })
-    return true
+    const top = execSync('git rev-parse --show-toplevel', { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim()
+    return fs.realpathSync(top) === fs.realpathSync(process.cwd())
   } catch {
     return false
   }
@@ -27,7 +29,7 @@ function hasIdentity() {
 }
 
 // Main
-if (!isGitRepo()) {
+if (!isRepoRoot()) {
   console.error('\x1b[36mInitializing git repository...\x1b[0m')
   execSync('git init', { stdio: 'inherit' })
 }
