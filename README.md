@@ -26,16 +26,21 @@ AI agents and autonomous systems need verifiable identities. Traditional auth (A
 ## Installation
 
 ```bash
-# Just run it (no install required)
-npm init agent
+# A key and a DID document, nothing else (the bare profile)
+npm create agent@latest
+
+# Key, coins, a trail on Bitcoin and the first mark, in one command (the gitmark profile)
+npm create agent@latest gitmark
 
 # Or install globally
 npm install -g create-agent
-create-agent
+create-agent gitmark
 
 # Or as a library
 npm install create-agent
 ```
+
+`npm init agent` is the same command. Write `@latest`: npm keeps an old copy around and reuses it without saying so.
 
 ---
 
@@ -70,6 +75,50 @@ The tool outputs a spec-compliant DID document to `stdout`:
 Key information is displayed on `stderr` for security (private keys in red).
 
 ---
+
+## Profiles
+
+The key and the DID are always made. A profile is what the command adds on top, chosen by the first word:
+
+| word | what you get |
+|------|--------------|
+| none, or `bare` | the key in `git config nostr.privkey` and `agent.did.json` |
+| `gitmark` | the same, then 10,000 sats to the key from your voucher file, a trail (`git mark init`), the generated files committed as "agent identity" and that commit marked on Bitcoin. Ends with what `git mark info` prints. With no voucher file at all on a test chain it takes one coin from the public bootstrap address first |
+| a name from the [catalogue](https://init-agent.com/profiles.json) | a profile someone else published; the command says where it came from and what it writes before applying it |
+| a path or URL ending in `.json` | a manifest of your own, before it is listed |
+
+Options go after `--`: `--chain <id>` (default: `git config gitmark.network`, else `txbt4`), `--announce` to also publish the repo and its first mark to Nostr, `--no-fund`, `--no-mark`, `--dry-run` to see every step and write nothing.
+
+```bash
+npm create agent@latest gitmark -- --dry-run
+npm create agent@latest gitmark -- --chain xbt --announce
+```
+
+### A profile is a manifest, not code
+
+```json
+{
+  "name": "gitmark",
+  "description": "Key, coins, a trail on Bitcoin and the first mark, in one command.",
+  "actions": ["fund", "trail", "mark"],
+  "files": { ".claude/settings.json": "{ \"permissions\": { \"allow\": [\"Bash(git mark *)\"] } }" },
+  "config": { "gitmark.announce": "false" },
+  "skills": [],
+  "next": ["Your agent ${DID} exists on ${CHAIN}."]
+}
+```
+
+- `files`: written into the repo unless they exist; `${DID}`, `${PUBKEY}`, `${CHAIN}`, `${NAME}` are filled in. No absolute paths, no `..`, nothing under `.git`
+- `config`: `git config --local` keys; `nostr.privkey` is refused
+- `actions`: only these four, run in this order whatever the manifest says: `fund`, `trail`, `mark`, `announce`. They are the steps of [git-mark.com/start.html](https://git-mark.com/start.html), implemented here, not in the manifest
+- `skills`: names for [aam](https://aam.wtf); printed as install lines, never run
+- `next`: lines printed at the end
+
+A profile never sees the private key, never runs code, and stops at the first failing step with the step named; the key and the DID stay in place either way.
+
+### Where profiles live
+
+Looked up in this order: `profiles/` in this package (built in, offline), then the catalogue at `init-agent.com/profiles.json` (name, description, publisher DID, manifest URL; added by pull request to this repo), then a path or URL given directly. The gitmark profile also writes `.claude/settings.json` into the repo with allow rules for `git mark`, `npx fund-agent@latest` and `npm create agent@latest`, so an agent running under Claude Code is not blocked on its own tools.
 
 ## Programmatic API
 

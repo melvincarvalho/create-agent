@@ -98,8 +98,11 @@ trust the [spec](https://nostrcg.github.io/did-nostr/) and this document.
 
 ## What you can do now
 
-1. **Mint an identity** — `npm init agent` (or `npx create-agent`). Writes
-   keys to `git config` and an `agent.did.json`.
+1. **Mint an identity** — `npm create agent@latest`. Writes the key to
+   `git config` and an `agent.did.json`. With the word `gitmark` after it,
+   one command also funds the key, starts the trail and marks the first
+   commit on Bitcoin: `npm create agent@latest gitmark`. The step-by-step
+   version with a check after each step is <https://git-mark.com/start.html>.
 2. **Prove control** — sign Nostr events / assertions with the key.
 3. **Anchor history** — use gitmark to commit a verifiable provenance chain.
 4. **Get funded** — `npx fund-agent` redeems a voucher into a Taproot wallet

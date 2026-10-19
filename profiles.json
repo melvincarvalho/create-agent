@@ -1,0 +1,4 @@
+{
+  "$comment": "The create-agent profile catalogue. npm create agent@latest <name> looks a name up here after the built-ins (bare, gitmark). Add an entry by pull request: name, description, publisher (a did:nostr), and the URL of a manifest in the same JSON shape as profiles/gitmark.json in the create-agent repo. A manifest may write files, set git config keys, name skills and request built-in actions (fund, trail, mark, announce); it never runs code and never sees the private key.",
+  "profiles": []
+}

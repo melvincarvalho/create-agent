@@ -1,0 +1,13 @@
+{
+  "name": "bare",
+  "description": "A key in git config and a DID document. Nothing else.",
+  "actions": [],
+  "files": {},
+  "config": {},
+  "skills": [],
+  "next": [
+    "Your identity is ${DID}",
+    "Fund it and anchor commits to Bitcoin:  npm create agent@latest gitmark   (in a new repo)",
+    "Or the steps one at a time:              https://git-mark.com/start.html"
+  ]
+}
