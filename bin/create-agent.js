@@ -88,30 +88,37 @@ if (!isRepoRoot()) {
   execSync('git init', { stdio: 'inherit' })
 }
 
+let pubkey, did
 if (hasIdentity()) {
-  log('\x1b[33mAgent identity already exists.\x1b[0m')
-  log('Privkey found in: git config nostr.privkey')
-  log('To regenerate, first run: git config --unset nostr.privkey')
-  process.exit(1)
+  if (!actions.length) {
+    log('\x1b[33mAgent identity already exists.\x1b[0m')
+    log('Privkey found in: git config nostr.privkey')
+    log('To regenerate, first run: git config --unset nostr.privkey')
+    process.exit(1)
+  }
+  // a rerun after a failed step: keep the key, continue the profile where it stopped
+  did = JSON.parse(fs.readFileSync('agent.did.json', 'utf8'))
+  pubkey = String(did.id).replace(/^did:nostr:/, '')
+  log(`\x1b[33mAgent identity already exists (${did.id}); continuing the ${manifest.name} profile.\x1b[0m`)
+} else {
+  const a = generateAgent()
+  pubkey = a.pubkey; did = a.did
+  fs.writeFileSync('agent.did.json', JSON.stringify(did, null, 2) + '\n')
+  execFileSync('git', ['config', 'nostr.privkey', a.privkey])
+
+  // The DID document on stdout (clean JSON, no npm noise); everything else on stderr
+  console.log(JSON.stringify(did, null, 2))
+  log('')
+  log('\x1b[32m✓ Agent identity created\x1b[0m')
+  log('\x1b[32m✓ DID saved to agent.did.json\x1b[0m')
+  log('\x1b[32m✓ Private key saved to git config nostr.privkey\x1b[0m')
+  log('')
+  log(`\x1b[36m  Public key:  \x1b[33m${pubkey}\x1b[0m`)
+  log(`\x1b[36m  DID:         \x1b[33m${did.id}\x1b[0m`)
+  log('')
+  log('\x1b[33m⚠  The private key is identity and money. Never print it, never commit it.\x1b[0m')
+  log('')
 }
-
-// Generate agent identity
-const { privkey, pubkey, did } = generateAgent()
-fs.writeFileSync('agent.did.json', JSON.stringify(did, null, 2) + '\n')
-execFileSync('git', ['config', 'nostr.privkey', privkey])
-
-// The DID document on stdout (clean JSON, no npm noise); everything else on stderr
-console.log(JSON.stringify(did, null, 2))
-log('')
-log('\x1b[32m✓ Agent identity created\x1b[0m')
-log('\x1b[32m✓ DID saved to agent.did.json\x1b[0m')
-log('\x1b[32m✓ Private key saved to git config nostr.privkey\x1b[0m')
-log('')
-log(`\x1b[36m  Public key:  \x1b[33m${pubkey}\x1b[0m`)
-log(`\x1b[36m  DID:         \x1b[33m${did.id}\x1b[0m`)
-log('')
-log('\x1b[33m⚠  The private key is identity and money. Never print it, never commit it.\x1b[0m')
-log('')
 
 // The profile: files, config, then the actions
 const vars = { DID: did.id, PUBKEY: pubkey, CHAIN: chain, NAME: manifest.name }
@@ -122,11 +129,11 @@ for (const k of applied.config) log(`\x1b[32m✓ git config ${k}\x1b[0m`)
 if (manifest.skills.length) log(`\x1b[36mSkills this profile names (install with aam):\x1b[0m\n${manifest.skills.map((s) => `  aam skill install ${s}`).join('\n')}`)
 
 try {
-  const ran = await runActions(actions, { pubkey, chain, cwd: process.cwd(), dryRun: false, log })
+  const ran = await runActions(actions, { pubkey, chain, cwd: process.cwd(), dryRun: false, log, generated: [...applied.written, ...applied.skipped.filter((f) => f in manifest.files)] })
   if (ran.length) { log(''); log(trailInfo({ cwd: process.cwd(), log }).trimEnd()) }
 } catch (e) {
   log(`\x1b[31m${e.message}\x1b[0m`)
-  log('The key and the DID are in place; fix the cause and run the remaining steps from https://git-mark.com/start.html')
+  log('The key and the DID are in place. Fix the cause and run the same command again; it continues where it stopped.')
   process.exit(1)
 }
 

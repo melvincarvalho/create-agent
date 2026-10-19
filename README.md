@@ -108,13 +108,13 @@ npm create agent@latest gitmark -- --chain xbt --announce
 }
 ```
 
-- `files`: written into the repo unless they exist; `${DID}`, `${PUBKEY}`, `${CHAIN}`, `${NAME}` are filled in. No absolute paths, no `..`, nothing under `.git`
-- `config`: `git config --local` keys; `nostr.privkey` is refused
+- `files`: written into the repo unless they exist; `${DID}`, `${PUBKEY}`, `${CHAIN}`, `${NAME}` are filled in. Forward-slash relative paths only, no `..`, no segment named `.git` in any case, and the resolved path must stay inside the repo, links included
+- `config`: `git config --local` keys, in the `gitmark.*` and `agent.*` namespaces or `nostr.relays` only. git runs the values of many other keys as commands (`core.pager`, `alias.*`, `filter.*`), so those are refused, as is `nostr.privkey`
 - `actions`: only these four, run in this order whatever the manifest says: `fund`, `trail`, `mark`, `announce`. They are the steps of [git-mark.com/start.html](https://git-mark.com/start.html), implemented here, not in the manifest
 - `skills`: names for [aam](https://aam.wtf); printed as install lines, never run
 - `next`: lines printed at the end
 
-A profile never sees the private key, never runs code, and stops at the first failing step with the step named; the key and the DID stay in place either way.
+A profile never sees the private key, never runs code, and stops at the first failing step with the step named; the key and the DID stay in place, and running the same command again continues where it stopped. The `mark` step commits only what the command made (`agent.did.json`, the profile's files, the funding record, the trail), never the rest of a working tree, with commit signing and hooks off for that commit. A catalogue entry may carry the manifest's `sha256`; then a hosted manifest that changes after review is refused.
 
 ### Where profiles live
 

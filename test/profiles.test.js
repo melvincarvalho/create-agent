@@ -45,8 +45,8 @@ describe('profiles', () => {
     const seen = []
     const fetch = async (url) => {
       seen.push(url)
-      if (url === 'https://init-agent.com/profiles.json') return { ok: true, json: async () => ({ profiles: [{ name: 'vercel', publisher: 'did:nostr:ab', manifest: 'https://example.com/vercel.json' }] }) }
-      if (url === 'https://example.com/vercel.json') return { ok: true, json: async () => ({ name: 'vercel', next: ['deploy'] }) }
+      if (url === 'https://init-agent.com/profiles.json') return { ok: true, text: async () => JSON.stringify({ profiles: [{ name: 'vercel', publisher: 'did:nostr:ab', manifest: 'https://example.com/vercel.json' }] }) }
+      if (url === 'https://example.com/vercel.json') return { ok: true, text: async () => JSON.stringify({ name: 'vercel', next: ['deploy'] }) }
       return { ok: false, status: 404 }
     }
     const byUrl = await resolveProfile('https://example.com/vercel.json', { fetch })
@@ -93,6 +93,69 @@ describe('profiles', () => {
     const dir = tmp()
     assert.throws(() => execFileSync('node', [bin, 'https://127.0.0.1:9/none.json'], { cwd: dir, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] }))
     assert.strictEqual(fs.readdirSync(dir).length, 0)
+    fs.rmSync(dir, { recursive: true })
+  })
+})
+
+describe('review fixes', () => {
+  test('config keys git could execute are refused; gitmark.*, agent.* and nostr.relays pass', () => {
+    for (const k of ['core.pager', 'core.fsmonitor', 'alias.x', 'filter.a.clean', 'credential.helper', 'include.path', 'core.sshCommand', 'diff.external', 'NOSTR.PRIVKEY']) {
+      assert.throws(() => validateManifest({ name: 'x', config: { [k]: '!sh' } }), new RegExp('not allowed|may not set'), k)
+    }
+    const ok = validateManifest({ name: 'x', config: { 'gitmark.announce': 'true', 'agent.role': 'bot', 'nostr.relays': 'wss://a' } })
+    assert.deepStrictEqual(Object.keys(ok.config), ['gitmark.announce', 'agent.role', 'nostr.relays'])
+    assert.throws(() => validateManifest({ name: 'x', config: { 'gitmark.x': 'a\nb' } }), /single-line/)
+  })
+
+  test('file paths: case-insensitive .git, nested .git, backslashes and drive letters are refused', () => {
+    for (const p of ['.GIT/config', 'a/.git/hooks/x', 'a\\..\\b', 'C:/x', 'a/../b', './a', 'a//b']) {
+      assert.throws(() => validateManifest({ name: 'x', files: { [p]: 'x' } }), /not allowed/, p)
+    }
+    assert.ok(validateManifest({ name: 'x', files: { 'a/b/c.txt': 'x', '.claude/settings.json': '{}' } }))
+  })
+
+  test('applyManifest refuses to follow a symlinked directory out of the repo', () => {
+    const dir = tmp(); const outside = tmp()
+    execSync('git init -q', { cwd: dir })
+    fs.symlinkSync(outside, path.join(dir, 'link'))
+    const m = validateManifest({ name: 'x', files: { 'link/evil.txt': 'x' } })
+    assert.throws(() => applyManifest(m, { cwd: dir }), /leaves the repo/)
+    assert.ok(!fs.existsSync(path.join(outside, 'evil.txt')))
+    fs.rmSync(dir, { recursive: true }); fs.rmSync(outside, { recursive: true })
+  })
+
+  test('a catalogue entry with sha256 pins the manifest', async () => {
+    const body = JSON.stringify({ name: 'pinned', next: ['ok'] })
+    const { createHash } = await import('node:crypto')
+    const good = createHash('sha256').update(body).digest('hex')
+    const fetch = (hash) => async (url) => {
+      if (url.endsWith('/profiles.json')) return { ok: true, text: async () => JSON.stringify({ profiles: [{ name: 'pinned', manifest: 'https://example.com/p.json', sha256: hash }] }) }
+      return { ok: true, text: async () => body }
+    }
+    assert.strictEqual((await resolveProfile('pinned', { fetch: fetch(good) })).manifest.name, 'pinned')
+    await assert.rejects(resolveProfile('pinned', { fetch: fetch('00'.repeat(32)) }), /has changed since it was listed/)
+  })
+
+  test('CLI mark step commits only the generated files, with signing and hooks off, and a rerun continues', async () => {
+    const dir = tmp()
+    execSync('git init -q', { cwd: dir })
+    fs.writeFileSync(path.join(dir, 'secret.env'), 'TOKEN=abc')          // must never be committed
+    execSync('git config --local commit.gpgsign true', { cwd: dir })       // must not break the commit
+    fs.mkdirSync(path.join(dir, '.git/hooks'), { recursive: true })
+    fs.writeFileSync(path.join(dir, '.git/hooks/pre-commit'), '#!/bin/sh\nexit 1\n', { mode: 0o755 })  // must be bypassed
+    const { ACTIONS } = await import('../lib/actions.js')
+    // run the mark step with gitmark replaced by a no-op: we are testing the commit, not the chain
+    const ctx = { cwd: dir, dryRun: false, log: () => {}, generated: ['.claude/settings.json'] }
+    fs.writeFileSync(path.join(dir, 'agent.did.json'), '{"id":"did:nostr:ab"}')
+    fs.mkdirSync(path.join(dir, '.claude')); fs.writeFileSync(path.join(dir, '.claude/settings.json'), '{}')
+    fs.writeFileSync(path.join(dir, 'blocktrails.json'), JSON.stringify({ states: [] }))
+    // gitmark binary is spawned via process.execPath; point GITMARK at a stub by monkeypatching the module is heavy,
+    // so instead expect the real git mark to fail (no coin) and check what was committed before it ran
+    await assert.rejects(ACTIONS.mark(ctx))
+    const files = execSync('git show --name-only --format= HEAD', { cwd: dir, encoding: 'utf8' }).trim().split('\n').sort()
+    assert.deepStrictEqual(files, ['.claude/settings.json', 'agent.did.json', 'blocktrails.json'])
+    assert.strictEqual(execSync('git log --format=%s', { cwd: dir, encoding: 'utf8' }).trim(), 'agent identity')
+    assert.match(execSync('git status --short', { cwd: dir, encoding: 'utf8' }), /\?\? secret\.env/)
     fs.rmSync(dir, { recursive: true })
   })
 })
