@@ -1,0 +1,16 @@
+{
+  "name": "gitmark",
+  "description": "Key, coins, a trail on Bitcoin and the first mark, in one command.",
+  "actions": ["fund", "trail", "mark"],
+  "files": {
+    ".claude/settings.json": "{\n  \"permissions\": {\n    \"allow\": [\n      \"Bash(git mark *)\",\n      \"Bash(npx fund-agent@latest *)\",\n      \"Bash(npm create agent@latest *)\"\n    ]\n  }\n}\n"
+  },
+  "config": {},
+  "skills": [],
+  "next": [
+    "Your agent ${DID} exists on ${CHAIN}.",
+    "Each commit worth proving:  git mark          (300 sats)",
+    "Tell the world, once:        git mark announce",
+    "The whole loop, with checks: https://git-mark.com/start.html"
+  ]
+}

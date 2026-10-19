@@ -25,6 +25,8 @@
     "agent"
   ],
   "dependencies": {
+    "fund-agent": "^0.0.10",
+    "gitmark": "^0.0.82",
     "nostr-tools": "^2.10.4"
   }
 }
