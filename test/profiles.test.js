@@ -159,3 +159,19 @@ describe('review fixes', () => {
     fs.rmSync(dir, { recursive: true })
   })
 })
+
+describe('trail waits for the explorer', () => {
+  test('waitForExplorer retries lookupOutput until it resolves, without real sleeping', async () => {
+    const { waitForExplorer } = await import('../lib/actions.js')
+    const logs = []
+    const ctx = { funded: { chain: 'txbt4', txid: 'ab'.repeat(32), vout: 0 }, log: (l) => logs.push(l) }
+    // lookupOutput hits the real explorer URL; stub fetch through fund-agent is not reachable from here,
+    // so point the outpoint at a chain whose API host does not resolve and check the retry/give-up path
+    const slept = []
+    const ok = await waitForExplorer({ ...ctx, funded: { chain: 'tbtc3', txid: 'ab'.repeat(32), vout: 0 } }, { tries: 2, delayMs: 1, sleep: async (ms) => { slept.push(ms) } })
+    assert.strictEqual(ok, false)
+    assert.deepStrictEqual(slept, [1, 1])
+    assert.match(logs[0], /waiting for the explorer/)
+    assert.match(logs.at(-1), /trying init anyway/)
+  })
+})
