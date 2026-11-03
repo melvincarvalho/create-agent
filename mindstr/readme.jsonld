@@ -1,0 +1,296 @@
+{
+  "@context": {
+    "@vocab": "https://mindstr.org/ns#",
+    "link": {
+      "@type": "@id"
+    },
+    "parent": {
+      "@type": "@id"
+    }
+  },
+  "version": "0.2",
+  "nodes": [
+    {
+      "@id": "#this",
+      "name": "npm init agent",
+      "x": 0,
+      "y": 0,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/README.md#npm-init-agent",
+      "bgColor": "#ebc573"
+    },
+    {
+      "@id": "#ab9ysn",
+      "name": "sections 1/2",
+      "x": 231,
+      "y": 149,
+      "bgColor": "#acd5ff",
+      "parent": "#this"
+    },
+    {
+      "@id": "#qhtzie",
+      "name": "Why?",
+      "x": 346,
+      "y": -217,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/README.md#why",
+      "bgColor": "#daeeff",
+      "parent": "#ab9ysn"
+    },
+    {
+      "@id": "#2sgmjt",
+      "name": "Installation",
+      "x": 468,
+      "y": -149,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/README.md#installation",
+      "bgColor": "#daeeff",
+      "parent": "#ab9ysn"
+    },
+    {
+      "@id": "#j9h6ge",
+      "name": "CLI Output",
+      "x": 429,
+      "y": -29,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/README.md#cli-output",
+      "bgColor": "#daeeff",
+      "parent": "#ab9ysn"
+    },
+    {
+      "@id": "#ejt2c7",
+      "name": "Profiles",
+      "x": 439,
+      "y": 174,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/README.md#profiles",
+      "bgColor": "#97deef",
+      "parent": "#ab9ysn"
+    },
+    {
+      "@id": "#tvx8v7",
+      "name": "A profile is a manifest, not code",
+      "x": 633,
+      "y": 160,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/README.md#a-profile-is-a-manifest-not-code",
+      "bgColor": "#d2f2fa",
+      "parent": "#ejt2c7"
+    },
+    {
+      "@id": "#4bfmpa",
+      "name": "Where profiles live",
+      "x": 517,
+      "y": 306,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/README.md#where-profiles-live",
+      "bgColor": "#d2f2fa",
+      "parent": "#ejt2c7"
+    },
+    {
+      "@id": "#c2mpq8",
+      "name": "Programmatic API",
+      "x": 259,
+      "y": 292,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/README.md#programmatic-api",
+      "bgColor": "#daeeff",
+      "parent": "#ab9ysn"
+    },
+    {
+      "@id": "#yykmee",
+      "name": "CLI Examples",
+      "x": 180,
+      "y": 397,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/README.md#cli-examples",
+      "bgColor": "#daeeff",
+      "parent": "#ab9ysn"
+    },
+    {
+      "@id": "#7kgwkb",
+      "name": "Output Reference",
+      "x": -59,
+      "y": 362,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/README.md#output-reference",
+      "bgColor": "#cccbff",
+      "parent": "#ab9ysn"
+    },
+    {
+      "@id": "#x7t4w7",
+      "name": "Keys",
+      "x": 42,
+      "y": 534,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/README.md#keys",
+      "bgColor": "#e9e8ff",
+      "parent": "#7kgwkb"
+    },
+    {
+      "@id": "#dsw684",
+      "name": "DID Document",
+      "x": -69,
+      "y": 530,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/README.md#did-document",
+      "bgColor": "#e9e8ff",
+      "parent": "#7kgwkb"
+    },
+    {
+      "@id": "#v88t4a",
+      "name": "Multibase Encoding",
+      "x": -223,
+      "y": 504,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/README.md#multibase-encoding",
+      "bgColor": "#e9e8ff",
+      "parent": "#7kgwkb"
+    },
+    {
+      "@id": "#skzt29",
+      "name": "sections 2/2",
+      "x": -225,
+      "y": -39,
+      "bgColor": "#febdc6",
+      "parent": "#this"
+    },
+    {
+      "@id": "#t4pwzt",
+      "name": "Use Cases",
+      "x": -377,
+      "y": 176,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/README.md#use-cases",
+      "bgColor": "#ffe2e6",
+      "parent": "#skzt29"
+    },
+    {
+      "@id": "#jhaa84",
+      "name": "Security",
+      "x": -486,
+      "y": 102,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/README.md#security",
+      "bgColor": "#ffe2e6",
+      "parent": "#skzt29"
+    },
+    {
+      "@id": "#wavvy9",
+      "name": "Next Steps: Sign Your Agents",
+      "x": -429,
+      "y": -26,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/README.md#next-steps-sign-your-agents",
+      "bgColor": "#ffe2e6",
+      "parent": "#skzt29"
+    },
+    {
+      "@id": "#i9w3v4",
+      "name": "Specification",
+      "x": -464,
+      "y": -159,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/README.md#specification",
+      "bgColor": "#ffe2e6",
+      "parent": "#skzt29"
+    },
+    {
+      "@id": "#e9sufn",
+      "name": "Related",
+      "x": -343,
+      "y": -220,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/README.md#related",
+      "bgColor": "#ffe2e6",
+      "parent": "#skzt29"
+    },
+    {
+      "@id": "#g45zx9",
+      "name": "Development",
+      "x": -308,
+      "y": -335,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/README.md#development",
+      "bgColor": "#ffe2e6",
+      "parent": "#skzt29"
+    },
+    {
+      "@id": "#vz8rhu",
+      "name": "← create-agent",
+      "x": 17,
+      "y": -195,
+      "link": "./index.jsonld",
+      "bgColor": "#ececec",
+      "parent": "#this"
+    }
+  ],
+  "connections": [
+    {
+      "start": 0,
+      "end": 1
+    },
+    {
+      "start": 1,
+      "end": 2
+    },
+    {
+      "start": 1,
+      "end": 3
+    },
+    {
+      "start": 1,
+      "end": 4
+    },
+    {
+      "start": 1,
+      "end": 5
+    },
+    {
+      "start": 5,
+      "end": 6
+    },
+    {
+      "start": 5,
+      "end": 7
+    },
+    {
+      "start": 1,
+      "end": 8
+    },
+    {
+      "start": 1,
+      "end": 9
+    },
+    {
+      "start": 1,
+      "end": 10
+    },
+    {
+      "start": 10,
+      "end": 11
+    },
+    {
+      "start": 10,
+      "end": 12
+    },
+    {
+      "start": 10,
+      "end": 13
+    },
+    {
+      "start": 0,
+      "end": 14
+    },
+    {
+      "start": 14,
+      "end": 15
+    },
+    {
+      "start": 14,
+      "end": 16
+    },
+    {
+      "start": 14,
+      "end": 17
+    },
+    {
+      "start": 14,
+      "end": 18
+    },
+    {
+      "start": 14,
+      "end": 19
+    },
+    {
+      "start": 14,
+      "end": 20
+    },
+    {
+      "start": 0,
+      "end": 21
+    }
+  ],
+  "selectedNode": 0
+}

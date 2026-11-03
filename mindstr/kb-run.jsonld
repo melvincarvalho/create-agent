@@ -1,0 +1,194 @@
+{
+  "@context": {
+    "@vocab": "https://mindstr.org/ns#",
+    "link": {
+      "@type": "@id"
+    },
+    "parent": {
+      "@type": "@id"
+    }
+  },
+  "version": "0.2",
+  "nodes": [
+    {
+      "@id": "#this",
+      "name": "create-agent: Installation",
+      "x": 0,
+      "y": 0,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/README.md#installation",
+      "bgColor": "#ebc573"
+    },
+    {
+      "@id": "#3yirdr",
+      "name": "Pipeline · 6",
+      "x": 171,
+      "y": 130,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/README.md#installation",
+      "bgColor": "#acd5ff",
+      "parent": "#this"
+    },
+    {
+      "@id": "#ptf2jy",
+      "name": "npm create: A key and a DID document,…",
+      "x": 386,
+      "y": -161,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/README.md#installation",
+      "bgColor": "#daeeff",
+      "parent": "#3yirdr"
+    },
+    {
+      "@id": "#4bfy6j",
+      "name": "npm create: Key, coins, a trail on Bitcoin…",
+      "x": 490,
+      "y": 82,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/README.md#installation",
+      "bgColor": "#daeeff",
+      "parent": "#3yirdr"
+    },
+    {
+      "@id": "#4wkdd9",
+      "name": "npm install: Or install globally",
+      "x": 299,
+      "y": 263,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/README.md#installation",
+      "bgColor": "#daeeff",
+      "parent": "#3yirdr"
+    },
+    {
+      "@id": "#yiscsp",
+      "name": "npm install: Or as a library",
+      "x": 131,
+      "y": 410,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/README.md#installation",
+      "bgColor": "#daeeff",
+      "parent": "#3yirdr"
+    },
+    {
+      "@id": "#2fzfhg",
+      "name": "npm install",
+      "x": -60,
+      "y": 362,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/README.md#development",
+      "bgColor": "#daeeff",
+      "parent": "#3yirdr"
+    },
+    {
+      "@id": "#6ab87r",
+      "name": "npm test",
+      "x": -232,
+      "y": 377,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/README.md#development",
+      "bgColor": "#daeeff",
+      "parent": "#3yirdr"
+    },
+    {
+      "@id": "#uyfscv",
+      "name": "Other scripts · 4",
+      "x": -255,
+      "y": -39,
+      "link": "https://github.com/melvincarvalho/create-agent/tree/gh-pages/scripts",
+      "bgColor": "#febdc6",
+      "parent": "#this"
+    },
+    {
+      "@id": "#z5cumb",
+      "name": "bin/create-agent.js",
+      "x": -407,
+      "y": 117,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/bin/create-agent.js",
+      "bgColor": "#ffe2e6",
+      "parent": "#uyfscv"
+    },
+    {
+      "@id": "#7iejm3",
+      "name": "test/cli.test.js",
+      "x": -500,
+      "y": -7,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/test/cli.test.js",
+      "bgColor": "#ffe2e6",
+      "parent": "#uyfscv"
+    },
+    {
+      "@id": "#452y5w",
+      "name": "test/index.test.js",
+      "x": -402,
+      "y": -129,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/test/index.test.js",
+      "bgColor": "#ffe2e6",
+      "parent": "#uyfscv"
+    },
+    {
+      "@id": "#yyjnxk",
+      "name": "test/profiles.test.js",
+      "x": -376,
+      "y": -280,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/test/profiles.test.js",
+      "bgColor": "#ffe2e6",
+      "parent": "#uyfscv"
+    },
+    {
+      "@id": "#hrvxpy",
+      "name": "← create-agent",
+      "x": -1,
+      "y": -195,
+      "link": "./index.jsonld",
+      "bgColor": "#ececec",
+      "parent": "#this"
+    }
+  ],
+  "connections": [
+    {
+      "start": 0,
+      "end": 1
+    },
+    {
+      "start": 1,
+      "end": 2
+    },
+    {
+      "start": 1,
+      "end": 3
+    },
+    {
+      "start": 1,
+      "end": 4
+    },
+    {
+      "start": 1,
+      "end": 5
+    },
+    {
+      "start": 1,
+      "end": 6
+    },
+    {
+      "start": 1,
+      "end": 7
+    },
+    {
+      "start": 0,
+      "end": 8
+    },
+    {
+      "start": 8,
+      "end": 9
+    },
+    {
+      "start": 8,
+      "end": 10
+    },
+    {
+      "start": 8,
+      "end": 11
+    },
+    {
+      "start": 8,
+      "end": 12
+    },
+    {
+      "start": 0,
+      "end": 13
+    }
+  ],
+  "selectedNode": 0
+}

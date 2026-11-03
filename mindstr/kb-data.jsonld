@@ -1,0 +1,322 @@
+{
+  "@context": {
+    "@vocab": "https://mindstr.org/ns#",
+    "link": {
+      "@type": "@id"
+    },
+    "parent": {
+      "@type": "@id"
+    }
+  },
+  "version": "0.2",
+  "nodes": [
+    {
+      "@id": "#this",
+      "name": "create-agent: Data",
+      "x": 0,
+      "y": 0,
+      "link": "https://github.com/melvincarvalho/create-agent/tree/gh-pages",
+      "bgColor": "#ebc573"
+    },
+    {
+      "@id": "#35gtrs",
+      "name": "Profiles · 1",
+      "x": 172,
+      "y": -129,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/README.md#profiles",
+      "bgColor": "#acd5ff",
+      "parent": "#this"
+    },
+    {
+      "@id": "#fiqrfa",
+      "name": "gitmark: same, then 10,000 sats to the key…",
+      "x": 322,
+      "y": -242,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/README.md#profiles",
+      "bgColor": "#daeeff",
+      "parent": "#35gtrs"
+    },
+    {
+      "@id": "#fad69b",
+      "name": "Output Reference · 11",
+      "x": 18,
+      "y": 195,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/README.md#output-reference",
+      "bgColor": "#f3bee1",
+      "parent": "#this"
+    },
+    {
+      "@id": "#fnrzmm",
+      "name": "fields 1/2",
+      "x": 348,
+      "y": 215,
+      "bgColor": "#e2c3f5",
+      "parent": "#fad69b"
+    },
+    {
+      "@id": "#3y3s3p",
+      "name": "pubkey: 64 hex chars",
+      "x": 626,
+      "y": 59,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/README.md#output-reference",
+      "bgColor": "#f4e5fc",
+      "parent": "#fnrzmm"
+    },
+    {
+      "@id": "#ujs2ci",
+      "name": "npub: bech32",
+      "x": 671,
+      "y": 170,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/README.md#output-reference",
+      "bgColor": "#f4e5fc",
+      "parent": "#fnrzmm"
+    },
+    {
+      "@id": "#442pm7",
+      "name": "privkey: 64 hex chars",
+      "x": 561,
+      "y": 244,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/README.md#output-reference",
+      "bgColor": "#f4e5fc",
+      "parent": "#fnrzmm"
+    },
+    {
+      "@id": "#imr4n9",
+      "name": "nsec: bech32",
+      "x": 555,
+      "y": 362,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/README.md#output-reference",
+      "bgColor": "#f4e5fc",
+      "parent": "#fnrzmm"
+    },
+    {
+      "@id": "#tpktj6",
+      "name": "@context: W3C CID v1 + Nostr context",
+      "x": 396,
+      "y": 417,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/README.md#output-reference",
+      "bgColor": "#f4e5fc",
+      "parent": "#fnrzmm"
+    },
+    {
+      "@id": "#u94rpy",
+      "name": "id: did:nostr:<pubkey>",
+      "x": 292,
+      "y": 541,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/README.md#output-reference",
+      "bgColor": "#f4e5fc",
+      "parent": "#fnrzmm"
+    },
+    {
+      "@id": "#7txfyn",
+      "name": "fields 2/2",
+      "x": -259,
+      "y": 291,
+      "bgColor": "#fdbdc8",
+      "parent": "#fad69b"
+    },
+    {
+      "@id": "#v5njcx",
+      "name": "type: DIDNostr",
+      "x": -8,
+      "y": 529,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/README.md#output-reference",
+      "bgColor": "#ffe2e7",
+      "parent": "#7txfyn"
+    },
+    {
+      "@id": "#z8kicz",
+      "name": "seeAlso: Link to the agent onboarding skill",
+      "x": -195,
+      "y": 574,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/README.md#output-reference",
+      "bgColor": "#ffe2e7",
+      "parent": "#7txfyn"
+    },
+    {
+      "@id": "#7348h9",
+      "name": "verificationMethod: Multikey with secp256k1",
+      "x": -378,
+      "y": 429,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/README.md#output-reference",
+      "bgColor": "#ffe2e7",
+      "parent": "#7txfyn"
+    },
+    {
+      "@id": "#jtny2v",
+      "name": "authentication: #key1 reference",
+      "x": -573,
+      "y": 342,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/README.md#output-reference",
+      "bgColor": "#ffe2e7",
+      "parent": "#7txfyn"
+    },
+    {
+      "@id": "#zvvi4r",
+      "name": "assertionMethod: #key1 reference",
+      "x": -594,
+      "y": 177,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/README.md#output-reference",
+      "bgColor": "#ffe2e7",
+      "parent": "#7txfyn"
+    },
+    {
+      "@id": "#ezqtt6",
+      "name": "Related",
+      "x": -153,
+      "y": -146,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/README.md#related",
+      "bgColor": "#f1c99c",
+      "parent": "#this"
+    },
+    {
+      "@id": "#8edjsn",
+      "name": "aam",
+      "x": -390,
+      "y": -154,
+      "link": "https://aam.wtf",
+      "bgColor": "#fbe8d3",
+      "parent": "#ezqtt6"
+    },
+    {
+      "@id": "#75s7ir",
+      "name": "did:nostr Specification",
+      "x": -398,
+      "y": -242,
+      "link": "https://nostrcg.github.io/did-nostr/",
+      "bgColor": "#fbe8d3",
+      "parent": "#ezqtt6"
+    },
+    {
+      "@id": "#7x3k79",
+      "name": "DID:nostr Explorer",
+      "x": -280,
+      "y": -286,
+      "link": "https://nostrapps.github.io/did-explorer/",
+      "bgColor": "#fbe8d3",
+      "parent": "#ezqtt6"
+    },
+    {
+      "@id": "#4af2dc",
+      "name": "nostr-tools",
+      "x": -256,
+      "y": -370,
+      "link": "https://github.com/nbd-wtf/nostr-tools",
+      "bgColor": "#fbe8d3",
+      "parent": "#ezqtt6"
+    },
+    {
+      "@id": "#7iui3z",
+      "name": "W3C DID Core",
+      "x": -128,
+      "y": -347,
+      "link": "https://www.w3.org/TR/did-core/",
+      "bgColor": "#fbe8d3",
+      "parent": "#ezqtt6"
+    },
+    {
+      "@id": "#bq9ccn",
+      "name": "← create-agent",
+      "x": 46,
+      "y": -192,
+      "link": "./index.jsonld",
+      "bgColor": "#ececec",
+      "parent": "#this"
+    }
+  ],
+  "connections": [
+    {
+      "start": 0,
+      "end": 1
+    },
+    {
+      "start": 1,
+      "end": 2
+    },
+    {
+      "start": 0,
+      "end": 3
+    },
+    {
+      "start": 3,
+      "end": 4
+    },
+    {
+      "start": 4,
+      "end": 5
+    },
+    {
+      "start": 4,
+      "end": 6
+    },
+    {
+      "start": 4,
+      "end": 7
+    },
+    {
+      "start": 4,
+      "end": 8
+    },
+    {
+      "start": 4,
+      "end": 9
+    },
+    {
+      "start": 4,
+      "end": 10
+    },
+    {
+      "start": 3,
+      "end": 11
+    },
+    {
+      "start": 11,
+      "end": 12
+    },
+    {
+      "start": 11,
+      "end": 13
+    },
+    {
+      "start": 11,
+      "end": 14
+    },
+    {
+      "start": 11,
+      "end": 15
+    },
+    {
+      "start": 11,
+      "end": 16
+    },
+    {
+      "start": 0,
+      "end": 17
+    },
+    {
+      "start": 17,
+      "end": 18
+    },
+    {
+      "start": 17,
+      "end": 19
+    },
+    {
+      "start": 17,
+      "end": 20
+    },
+    {
+      "start": 17,
+      "end": 21
+    },
+    {
+      "start": 17,
+      "end": 22
+    },
+    {
+      "start": 0,
+      "end": 23
+    }
+  ],
+  "selectedNode": 0
+}

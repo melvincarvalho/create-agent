@@ -1,0 +1,129 @@
+{
+  "@context": {
+    "@vocab": "https://mindstr.org/ns#",
+    "link": {
+      "@type": "@id"
+    },
+    "parent": {
+      "@type": "@id"
+    }
+  },
+  "version": "0.2",
+  "nodes": [
+    {
+      "@id": "#this",
+      "name": "did:nostr",
+      "x": 0,
+      "y": 0,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/SKILL.md#didnostr",
+      "bgColor": "#ebc573"
+    },
+    {
+      "@id": "#hzsqn4",
+      "name": "TL;DR",
+      "x": 182,
+      "y": -119,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/SKILL.md#tldr",
+      "bgColor": "#acd5ff",
+      "parent": "#this"
+    },
+    {
+      "@id": "#dttxwc",
+      "name": "The keystone: one key, many roles",
+      "x": 230,
+      "y": 26,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/SKILL.md#the-keystone-one-key-many-roles",
+      "bgColor": "#d9c6fb",
+      "parent": "#this"
+    },
+    {
+      "@id": "#p8ysyk",
+      "name": "Your identity document, annotated",
+      "x": 140,
+      "y": 152,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/SKILL.md#your-identity-document-annotated",
+      "bgColor": "#f9bdd5",
+      "parent": "#this"
+    },
+    {
+      "@id": "#9c2qhr",
+      "name": "Current spec facts",
+      "x": -30,
+      "y": 196,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/SKILL.md#current-spec-facts-verify-do-not-recall-from-memory",
+      "bgColor": "#fcc2a9",
+      "parent": "#this"
+    },
+    {
+      "@id": "#h59t8f",
+      "name": "What you can do now",
+      "x": -182,
+      "y": 119,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/SKILL.md#what-you-can-do-now",
+      "bgColor": "#e0d199",
+      "parent": "#this"
+    },
+    {
+      "@id": "#rfby2g",
+      "name": "The stack",
+      "x": -228,
+      "y": -26,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/SKILL.md#the-stack-follow-your-nose",
+      "bgColor": "#b1dfb5",
+      "parent": "#this"
+    },
+    {
+      "@id": "#arxjt8",
+      "name": "Safety posture",
+      "x": -140,
+      "y": -155,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/SKILL.md#safety-posture",
+      "bgColor": "#95e1e3",
+      "parent": "#this"
+    },
+    {
+      "@id": "#jtyjdw",
+      "name": "← create-agent",
+      "x": 30,
+      "y": -194,
+      "link": "./index.jsonld",
+      "bgColor": "#ececec",
+      "parent": "#this"
+    }
+  ],
+  "connections": [
+    {
+      "start": 0,
+      "end": 1
+    },
+    {
+      "start": 0,
+      "end": 2
+    },
+    {
+      "start": 0,
+      "end": 3
+    },
+    {
+      "start": 0,
+      "end": 4
+    },
+    {
+      "start": 0,
+      "end": 5
+    },
+    {
+      "start": 0,
+      "end": 6
+    },
+    {
+      "start": 0,
+      "end": 7
+    },
+    {
+      "start": 0,
+      "end": 8
+    }
+  ],
+  "selectedNode": 0
+}

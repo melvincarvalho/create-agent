@@ -1,0 +1,467 @@
+{
+  "@context": {
+    "@vocab": "https://mindstr.org/ns#",
+    "link": {
+      "@type": "@id"
+    },
+    "parent": {
+      "@type": "@id"
+    }
+  },
+  "version": "0.2",
+  "nodes": [
+    {
+      "@id": "#this",
+      "name": "create-agent",
+      "x": 0,
+      "y": 0,
+      "link": "https://github.com/melvincarvalho/create-agent",
+      "bgColor": "#ebc573"
+    },
+    {
+      "@id": "#dtqx4z",
+      "name": "Live site",
+      "x": 241,
+      "y": -56,
+      "link": "https://init-agent.com/",
+      "bgColor": "#acd5ff",
+      "parent": "#this"
+    },
+    {
+      "@id": "#u2s2vv",
+      "name": "Why?",
+      "x": 397,
+      "y": -258,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/README.md#why",
+      "bgColor": "#daeeff",
+      "parent": "#dtqx4z"
+    },
+    {
+      "@id": "#vx2z65",
+      "name": "W3C Standards",
+      "x": 480,
+      "y": -468,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/README.md#why",
+      "bgColor": "#daeeff",
+      "parent": "#u2s2vv"
+    },
+    {
+      "@id": "#xwei9g",
+      "name": "Cryptographic Identity",
+      "x": 653,
+      "y": -464,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/README.md#why",
+      "bgColor": "#daeeff",
+      "parent": "#u2s2vv"
+    },
+    {
+      "@id": "#6bzs4i",
+      "name": "Decentralized",
+      "x": 617,
+      "y": -355,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/README.md#why",
+      "bgColor": "#daeeff",
+      "parent": "#u2s2vv"
+    },
+    {
+      "@id": "#fkywkd",
+      "name": "Zero Config",
+      "x": 748,
+      "y": -330,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/README.md#why",
+      "bgColor": "#daeeff",
+      "parent": "#u2s2vv"
+    },
+    {
+      "@id": "#j8deiz",
+      "name": "Your AI agent has no identity. It can't prove who it is.…",
+      "x": 579,
+      "y": -95,
+      "link": "https://init-agent.com/",
+      "bgColor": "#daeeff",
+      "parent": "#dtqx4z"
+    },
+    {
+      "@id": "#aya9s9",
+      "name": "init-agent.com",
+      "x": 499,
+      "y": 33,
+      "link": "https://init-agent.com/",
+      "bgColor": "#daeeff",
+      "parent": "#dtqx4z"
+    },
+    {
+      "@id": "#vn2imx",
+      "name": "since Jul 2021 · last 19 Oct 2026",
+      "x": 569,
+      "y": 133,
+      "link": "https://github.com/melvincarvalho/create-agent/commits/gh-pages",
+      "bgColor": "#ececec",
+      "parent": "#dtqx4z"
+    },
+    {
+      "@id": "#2tznvh",
+      "name": "Data · 3 ›",
+      "x": 180,
+      "y": 148,
+      "link": "./kb-data.jsonld",
+      "bgColor": "#d9c6fb",
+      "parent": "#this"
+    },
+    {
+      "@id": "#cnh2fk",
+      "name": "Profiles · 1 ›",
+      "x": 407,
+      "y": 247,
+      "link": "./kb-data.jsonld",
+      "bgColor": "#efe6ff",
+      "parent": "#2tznvh"
+    },
+    {
+      "@id": "#dk76uz",
+      "name": "Output Reference · 11 ›",
+      "x": 451,
+      "y": 349,
+      "link": "./kb-data.jsonld",
+      "bgColor": "#efe6ff",
+      "parent": "#2tznvh"
+    },
+    {
+      "@id": "#5aggpq",
+      "name": "Related ›",
+      "x": 289,
+      "y": 337,
+      "link": "./kb-data.jsonld",
+      "bgColor": "#efe6ff",
+      "parent": "#2tznvh"
+    },
+    {
+      "@id": "#eqmaaw",
+      "name": "Installation · 2 ›",
+      "x": 111,
+      "y": 202,
+      "link": "./kb-run.jsonld",
+      "bgColor": "#f9bdd5",
+      "parent": "#this"
+    },
+    {
+      "@id": "#pjbq25",
+      "name": "Pipeline · 6 ›",
+      "x": 202,
+      "y": 389,
+      "link": "./kb-run.jsonld",
+      "bgColor": "#ffe2ed",
+      "parent": "#eqmaaw"
+    },
+    {
+      "@id": "#tz98k5",
+      "name": "Other scripts · 4 ›",
+      "x": 133,
+      "y": 489,
+      "link": "./kb-run.jsonld",
+      "bgColor": "#ffe2ed",
+      "parent": "#eqmaaw"
+    },
+    {
+      "@id": "#437yyk",
+      "name": "SKILL.md · 7 ›",
+      "x": -49,
+      "y": 218,
+      "link": "./doc-skill.jsonld",
+      "bgColor": "#fcc2a9",
+      "parent": "#this"
+    },
+    {
+      "@id": "#j3k2bu",
+      "name": "Source · lib/ · 2 files ›",
+      "x": -137,
+      "y": 174,
+      "link": "./src.jsonld",
+      "bgColor": "#e0d199",
+      "parent": "#this"
+    },
+    {
+      "@id": "#uhqx6j",
+      "name": "README · 13 ›",
+      "x": -305,
+      "y": 48,
+      "link": "./readme.jsonld",
+      "bgColor": "#b1dfb5",
+      "parent": "#this"
+    },
+    {
+      "@id": "#aurbbn",
+      "name": "CLI Output",
+      "x": -411,
+      "y": 242,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/README.md#cli-output",
+      "bgColor": "#ddf2de",
+      "parent": "#uhqx6j"
+    },
+    {
+      "@id": "#fxz322",
+      "name": "Profiles",
+      "x": -525,
+      "y": 229,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/README.md#profiles",
+      "bgColor": "#ddf2de",
+      "parent": "#uhqx6j"
+    },
+    {
+      "@id": "#s77s87",
+      "name": "Programmatic API",
+      "x": -471,
+      "y": 147,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/README.md#programmatic-api",
+      "bgColor": "#ddf2de",
+      "parent": "#uhqx6j"
+    },
+    {
+      "@id": "#k73rni",
+      "name": "CLI Examples",
+      "x": -577,
+      "y": 101,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/README.md#cli-examples",
+      "bgColor": "#ddf2de",
+      "parent": "#uhqx6j"
+    },
+    {
+      "@id": "#r8zm2z",
+      "name": "Output Reference",
+      "x": -499,
+      "y": 32,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/README.md#output-reference",
+      "bgColor": "#ddf2de",
+      "parent": "#uhqx6j"
+    },
+    {
+      "@id": "#wzv4c3",
+      "name": "Security",
+      "x": -589,
+      "y": -29,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/README.md#security",
+      "bgColor": "#ddf2de",
+      "parent": "#uhqx6j"
+    },
+    {
+      "@id": "#7fnz2s",
+      "name": "Next Steps: Sign Your Agents",
+      "x": -488,
+      "y": -91,
+      "link": "https://github.com/melvincarvalho/create-agent/blob/gh-pages/README.md#next-steps-sign-your-agents",
+      "bgColor": "#ddf2de",
+      "parent": "#uhqx6j"
+    },
+    {
+      "@id": "#p89exh",
+      "name": "Open · 5",
+      "x": -79,
+      "y": -202,
+      "link": "https://github.com/melvincarvalho/create-agent/issues",
+      "bgColor": "#95e1e3",
+      "parent": "#this"
+    },
+    {
+      "@id": "#urtpxv",
+      "name": "Open PRs · 1",
+      "x": -389,
+      "y": -267,
+      "link": "https://github.com/melvincarvalho/create-agent/pulls",
+      "bgColor": "#d1f3f4",
+      "parent": "#p89exh"
+    },
+    {
+      "@id": "#4dg5c4",
+      "name": "#21 Use the CID v1.0 `@context` so `Mul…",
+      "x": -583,
+      "y": -401,
+      "link": "https://github.com/melvincarvalho/create-agent/pull/21",
+      "bgColor": "#d1f3f4",
+      "parent": "#urtpxv"
+    },
+    {
+      "@id": "#kwm3he",
+      "name": "Open issues · 4",
+      "x": -105,
+      "y": -493,
+      "link": "https://github.com/melvincarvalho/create-agent/issues",
+      "bgColor": "#d1f3f4",
+      "parent": "#p89exh"
+    },
+    {
+      "@id": "#qvd9cw",
+      "name": "#20 Document the funding path: after `n…",
+      "x": -384,
+      "y": -548,
+      "link": "https://github.com/melvincarvalho/create-agent/issues/20",
+      "bgColor": "#d1f3f4",
+      "parent": "#kwm3he"
+    },
+    {
+      "@id": "#sf37xb",
+      "name": "#19 Feature: Align agent output with W3…",
+      "x": -246,
+      "y": -683,
+      "link": "https://github.com/melvincarvalho/create-agent/issues/19",
+      "bgColor": "#d1f3f4",
+      "parent": "#kwm3he"
+    },
+    {
+      "@id": "#fuhjpf",
+      "name": "#13 Feature: Create @nostr-agent/ai-sdk…",
+      "x": -43,
+      "y": -636,
+      "link": "https://github.com/melvincarvalho/create-agent/issues/13",
+      "bgColor": "#d1f3f4",
+      "parent": "#kwm3he"
+    },
+    {
+      "@id": "#dry8wx",
+      "name": "#12 Feature: Create wdio-nostr-service…",
+      "x": 150,
+      "y": -702,
+      "link": "https://github.com/melvincarvalho/create-agent/issues/12",
+      "bgColor": "#d1f3f4",
+      "parent": "#kwm3he"
+    }
+  ],
+  "connections": [
+    {
+      "start": 0,
+      "end": 1
+    },
+    {
+      "start": 1,
+      "end": 2
+    },
+    {
+      "start": 2,
+      "end": 3
+    },
+    {
+      "start": 2,
+      "end": 4
+    },
+    {
+      "start": 2,
+      "end": 5
+    },
+    {
+      "start": 2,
+      "end": 6
+    },
+    {
+      "start": 1,
+      "end": 7
+    },
+    {
+      "start": 1,
+      "end": 8
+    },
+    {
+      "start": 1,
+      "end": 9
+    },
+    {
+      "start": 0,
+      "end": 10
+    },
+    {
+      "start": 10,
+      "end": 11
+    },
+    {
+      "start": 10,
+      "end": 12
+    },
+    {
+      "start": 10,
+      "end": 13
+    },
+    {
+      "start": 0,
+      "end": 14
+    },
+    {
+      "start": 14,
+      "end": 15
+    },
+    {
+      "start": 14,
+      "end": 16
+    },
+    {
+      "start": 0,
+      "end": 17
+    },
+    {
+      "start": 0,
+      "end": 18
+    },
+    {
+      "start": 0,
+      "end": 19
+    },
+    {
+      "start": 19,
+      "end": 20
+    },
+    {
+      "start": 19,
+      "end": 21
+    },
+    {
+      "start": 19,
+      "end": 22
+    },
+    {
+      "start": 19,
+      "end": 23
+    },
+    {
+      "start": 19,
+      "end": 24
+    },
+    {
+      "start": 19,
+      "end": 25
+    },
+    {
+      "start": 19,
+      "end": 26
+    },
+    {
+      "start": 0,
+      "end": 27
+    },
+    {
+      "start": 27,
+      "end": 28
+    },
+    {
+      "start": 28,
+      "end": 29
+    },
+    {
+      "start": 27,
+      "end": 30
+    },
+    {
+      "start": 30,
+      "end": 31
+    },
+    {
+      "start": 30,
+      "end": 32
+    },
+    {
+      "start": 30,
+      "end": 33
+    },
+    {
+      "start": 30,
+      "end": 34
+    }
+  ],
+  "selectedNode": 0
+}

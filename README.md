@@ -1,5 +1,7 @@
 # npm init agent
 
+[![Mind map](https://mindstr.org/badge.svg)](https://mindstr.org/?uri=https://init-agent.com/mindstr/index.jsonld)
+
 [![npm version](https://img.shields.io/npm/v/create-agent.svg)](https://www.npmjs.com/package/create-agent)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Node.js](https://img.shields.io/badge/Node.js-18+-339933.svg)](https://nodejs.org/)

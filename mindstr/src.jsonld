@@ -1,0 +1,64 @@
+{
+  "@context": {
+    "@vocab": "https://mindstr.org/ns#",
+    "link": {
+      "@type": "@id"
+    },
+    "parent": {
+      "@type": "@id"
+    }
+  },
+  "version": "0.2",
+  "nodes": [
+    {
+      "@id": "#this",
+      "name": "create-agent source",
+      "x": 0,
+      "y": 0,
+      "link": "https://github.com/melvincarvalho/create-agent/tree/gh-pages/lib",
+      "bgColor": "#ebc573"
+    },
+    {
+      "@id": "#fad69b",
+      "name": "actions.js · 4 ›",
+      "x": 230,
+      "y": 0,
+      "link": "./src-actions-js.jsonld",
+      "bgColor": "#acd5ff",
+      "parent": "#this"
+    },
+    {
+      "@id": "#fnrzmm",
+      "name": "profiles.js · 10 ›",
+      "x": -115,
+      "y": 169,
+      "link": "./src-profiles-js.jsonld",
+      "bgColor": "#febdc6",
+      "parent": "#this"
+    },
+    {
+      "@id": "#3y3s3p",
+      "name": "← create-agent",
+      "x": -115,
+      "y": -169,
+      "link": "./index.jsonld",
+      "bgColor": "#ececec",
+      "parent": "#this"
+    }
+  ],
+  "connections": [
+    {
+      "start": 0,
+      "end": 1
+    },
+    {
+      "start": 0,
+      "end": 2
+    },
+    {
+      "start": 0,
+      "end": 3
+    }
+  ],
+  "selectedNode": 0
+}
